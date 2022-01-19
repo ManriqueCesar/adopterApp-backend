@@ -22,5 +22,7 @@ public interface AdopterRepository extends CrudRepository<Adopter, Long> {
 	
 	@Query("SELECT a FROM Adopter a WHERE a.status=1")
 	public ArrayList<Adopter> listEnabledAdopters();
+
+	public Boolean existsByDocNumber(String docNumber);
 	
 }

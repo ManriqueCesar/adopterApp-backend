@@ -13,7 +13,7 @@ public interface IAdopterService {
 	public ResponseModel register (AdopterDto adopter); 
 	public ArrayList<Adopter> listAllEnabled ();
 	public ResponseModel addComments (AdopterDto adopter);
-	public ResponseAdopter getByDocumentNumber (AdopterDto adopter); 
+	public ResponseAdopter getByDocumentNumber (String docNumber); 
 	public ArrayList<AdopterDetailDto> getComments (String docNumber); 
 	public ResponseAdopter getAdopterByIdOrganization (Long idOrganization);
 	public ResponseAdopter logicalDelete(Long idAdopter);

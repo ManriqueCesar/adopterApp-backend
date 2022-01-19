@@ -9,6 +9,7 @@ public class UserDto {
 	private String contrasena;
 	private Boolean habilitado;
 	private Long idOrganization;
+	private String organizationName;
 
 	public UserDto() {
 	}
@@ -19,6 +20,7 @@ public class UserDto {
 		this.contrasena = user.getUsuario().getPassword();
 		this.habilitado = user.getUsuario().getEnabled();
 		this.idOrganization = user.getUsuario().getPetOrganization().getId();
+		this.organizationName = user.getUsuario().getPetOrganization().getName();
 	}
 	
 	public Long getIdUsuario() {
@@ -60,5 +62,15 @@ public class UserDto {
 	public void setIdOrganization(Long idOrganization) {
 		this.idOrganization = idOrganization;
 	}
+
+	public String getOrganizationName() {
+		return organizationName;
+	}
+
+	public void setOrganizationName(String organizationName) {
+		this.organizationName = organizationName;
+	}
+	
+	
 
 }

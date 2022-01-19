@@ -56,7 +56,7 @@ public class IAuthServiceImpl implements IAuthService {
 				userDto.setContrasena(null);
 				return new LoginResponseModel(jwtTokenUtil.generateToken(usuario),
 						userDto,
-						"Sesion iniciada", HttpStatus.OK.value());
+						"Bienvenid@, "+user.getPetOrganization().getName() , HttpStatus.OK.value());
 			}
 
 		} catch (DataAccessException e) {

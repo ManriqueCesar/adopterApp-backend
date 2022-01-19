@@ -169,8 +169,12 @@ public class POrganizationServiceImpl implements IPOrganizationService {
 		}
 	}
 
-	public boolean validateOrganizationStatus(Long idOrganization) {
-		if (organizationRepo.getStatusByIdOrganization(idOrganization).getStatus()) {
+	public Boolean validateOrganizationStatus(Long idOrganization) {
+		System.out.println("GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		System.out.println(idOrganization);
+		System.out.println(organizationRepo.getStatusByIdOrganization(idOrganization));
+		System.out.println("BNNNNNNNNNNNNNNNNNNNN");
+		if (organizationRepo.getStatusByIdOrganization(idOrganization)) {
 			return true;
 		} else {
 			return false;

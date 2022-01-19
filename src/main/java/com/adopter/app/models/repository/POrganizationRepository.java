@@ -24,8 +24,8 @@ public interface POrganizationRepository extends CrudRepository<PetOrganization,
 	@Query("SELECT pd.attemptsAvailable FROM PetOrganizationDetail pd WHERE pd.petOrganization.id=:idOrganization")
 	public Integer getAttemptsByIdOrganization(Long idOrganization);
 	
-	@Query("SELECT new com.adopter.app.models.dto.PetOrganizationDto(pd) FROM PetOrganizationDetail pd WHERE pd.petOrganization.id=:idOrganization")
-	public PetOrganizationDto getStatusByIdOrganization(Long idOrganization);
+	@Query("SELECT p.status FROM PetOrganization p WHERE p.id=:idOrganization")
+	public Boolean getStatusByIdOrganization(Long idOrganization);
 	
 	@Query("SELECT new com.adopter.app.models.dto.PetOrganizationDto(pd) FROM PetOrganizationDetail pd WHERE pd.petOrganization.id=:idOrganization")
 	public ArrayList<PetOrganizationDto> findPetOrganizationById(Long idOrganization);

@@ -51,9 +51,9 @@ public class AdopterController {
 		return adopterService.addComments(filter);
 	}
 	
-	@PostMapping("/detail")
-	public ResponseAdopter getByDocumentNumber(@RequestBody AdopterDto filter) {
-		return adopterService.getByDocumentNumber(filter);
+	@GetMapping("/detail/{docNumber}")
+	public ResponseAdopter getByDocumentNumber(@PathVariable String docNumber) {
+		return adopterService.getByDocumentNumber(docNumber);
 	}
 	
 	@PutMapping("/logicalDelete/{idAdopter}")

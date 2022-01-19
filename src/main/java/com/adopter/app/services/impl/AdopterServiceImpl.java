@@ -65,8 +65,8 @@ public class AdopterServiceImpl implements IAdopterService {
 	@Override
 	public ResponseModel register(AdopterDto adopterDto) {
 		try {
-
-			if (adopterRepo.findAdopterByNumberDoc(adopterDto.getDocumentNumber()).size() > 0) {
+			Boolean existsAdopter = adopterRepo.existsByDocNumber(adopterDto.getDocumentNumber());
+			if (existsAdopter) {
 				return new ResponseModel("Adoptante registrado previamente.", HttpStatus.CONFLICT.value());
 			} else if (adopterDto.getIdOrganization() == null) {
 				return new ResponseModel("Se requiere asignar una organizacion.", HttpStatus.CONFLICT.value());
@@ -89,7 +89,8 @@ public class AdopterServiceImpl implements IAdopterService {
 				adopter.setGender(adopterDto.getGender());
 				adopter.setPhone(adopterDto.getPhone());
 				adopter.setDocNumber(adopterDto.getDocumentNumber());
-
+				adopter.setStatus(Constants.ENABLED);
+				
 				distrito.setId(adopterDto.getIdDistrito());
 				severity.setId(adopterDto.getIdSeverity());
 				document.setId(adopterDto.getIdDocument());
@@ -158,9 +159,9 @@ public class AdopterServiceImpl implements IAdopterService {
 	}
 
 	@Override
-	public ResponseAdopter getByDocumentNumber(AdopterDto adopterDto) {
+	public ResponseAdopter getByDocumentNumber(String docNumber) {
 		try {
-			ArrayList<AdopterDto> adopter = adopterRepo.findAdopterByNumberDoc(adopterDto.getDocumentNumber());
+			ArrayList<AdopterDto> adopter = adopterRepo.findAdopterByNumberDoc(docNumber);
 			if (adopter.size() == 0) {
 				return new ResponseAdopter(null, "No se encontró adoptante.", HttpStatus.NOT_FOUND.value());
 			} else {
